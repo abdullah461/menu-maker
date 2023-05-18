@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <title>Menu</title>
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <nav>
+      <div class="logo">
+        <a href="">Mymenu</a>
+      </div>
+      <div class="links">
+        <a href="/" id="menu">Menu</a>
+        <a href="/logout" id="logout">Logout</a>
+        <a href="/login" id="login">Login</a>
+        <a href="/sign-up" id="signUp">Sign up</a>
+      </div>
+    </nav>
+    <!-- Header stops -->
+
+    <!-- flask messge -->
+    {% with messages = get_flashed_messages(with_categories=true)%}
+    {% if messages %} {% for category, message in messages %}
+    {%if category=='error'%}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% else %}
+      <div class="alert alert-success alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %} {% endfor %} {% endif %} {% endwith %}
+    <!-- end flash messge -->
+
+    <div class="container">{% block content %} {% endblock %}</div>
+
+    <script src="../static/app.js"></script>
+  </body>
+</html>
