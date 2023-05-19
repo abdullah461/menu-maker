@@ -8,5 +8,6 @@ views = Blueprint('views',__name__)
 
 # routing to the menu page 
 @views.route("/")
+@login_required
 def menu():
-    return render_template("menu.html")
+    return render_template("menu.html", user=current_user)
