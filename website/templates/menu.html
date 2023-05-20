@@ -4,11 +4,11 @@
         <div class="container">
              <button id="btn">+</button> 
             <div class="pop-up">
-                <form class="popup-content">
+                <form class="popup-content" method="POST">
                     <img src="../src/reject.png" alt="close" class="close">
-                    <input type="text" placeholder="Title" class="title" contenteditable="true">
-                    <input type="text" placeholder="Description" class="description" contenteditable="true">
-                    <input type="text" placeholder="Price" class="price" contenteditable="true">
+                    <input type="text" placeholder="Title" class="title" name="title">
+                    <input type="text" placeholder="Description" class="description" name="description">
+                    <input type="text" placeholder="Price" class="price" name="price">
                     <button type="submit">submit</button>         
                 </form>
             </div>
@@ -20,7 +20,22 @@
                     <p>{{user.address}}</p>
                     <p>{{user.phoneNo}}</p>
                 </div>
-                <ul class="item"></ul>
+                <ul class="item">
+                    {% for item in user.items %}
+                    
+                    <div>
+                        <h6>{{item.title}}</h6>
+                        <span>{{item.price}}</span>
+                        
+                    </div>
+                    <div>
+                        <p>{{item.description}}</p>
+                        <img src="../src/close.png" alt="" class = "remove-task">
+                    </div>
+
+                    {% endfor %}
+                    
+                </ul>
             </div>    
         </div>
     </section>
