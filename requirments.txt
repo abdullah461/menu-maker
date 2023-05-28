@@ -1,0 +1,4 @@
+tailwind packages to install
+    1. npm init -y   /package .json file to keep track of dependencies
+    2. npm install tailwindcss
+    

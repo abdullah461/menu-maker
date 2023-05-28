@@ -1,8 +1,8 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, jsonify
 from . import db
 from flask_login import login_required, current_user
 from .models import Item
-
+import json
 
 views = Blueprint('views',__name__)
 
@@ -27,3 +27,16 @@ def menu():
         db.session.commit()
         flash('New item added!', category='success')
     return render_template("menu.html",user=current_user)
+
+#delete item
+@views.route('/delete-item', methods=['POST'])
+def delete_item():
+    item = json.loads(request.data)
+    itemId = item['itemId']
+    item = Item.query.get(itemId)
+    if item:
+        if item.user_id == current_user.id:
+            db.session.delete(item)
+            db.session.commit()
+
+    return jsonify({})

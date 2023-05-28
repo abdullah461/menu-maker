@@ -30,7 +30,9 @@
                     </div>
                     <div>
                         <p>{{item.description}}</p>
-                        <img src="../src/close.png" alt="" class = "remove-task">
+                        <button type="button" class="btn-close" onclick="deleteItem({{item.id}})">  
+                        </button>
+                        <img src="../src/close.png" alt="" onclick="deleteItem({{item.id}})" class = "remove-task">
                     </div>
 
                     {% endfor %}

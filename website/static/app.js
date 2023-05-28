@@ -1,3 +1,33 @@
+
+// functionality to pop-up the filds for input
+
+document.getElementById("btn").addEventListener("click", function(){
+    document.querySelector(".pop-up").style.display = "flex"
+})
+document.querySelector(".close").addEventListener("click", function(){
+    document.querySelector(".pop-up").style.display = "none"
+})
+
+// delete Item
+function deleteItem(itemId) {
+    fetch("/delete-item",{
+        method: 'POST',
+        body: JSON.stringify({itemId: itemId}),
+    }).then((_res) =>{
+        window.location.href = "/";
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
 // dom elements
 // var itemForm = document.querySelector('.popup-content')
 // var itemList = document.querySelector('.item')
@@ -79,12 +109,3 @@
 //     localStorage.setItem('items', JSON.stringify(items))
 //     document.getElementById(itemid).remove()
 // }
-
-// functionality to pop-up the filds for input
-
-document.getElementById("btn").addEventListener("click", function(){
-    document.querySelector(".pop-up").style.display = "flex"
-})
-document.querySelector(".close").addEventListener("click", function(){
-    document.querySelector(".pop-up").style.display = "none"
-})
